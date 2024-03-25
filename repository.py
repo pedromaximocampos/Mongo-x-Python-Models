@@ -58,7 +58,7 @@ def delete_exceptions_decorator(func):
         except (ConfigurationError, BulkWriteError) as e:
             raise e(f"Error to delete documents:{e}\n"
                     f"Check if the parameters are valid or present!")
-
+    return wrapper
 
 def update_exceptions_decorator(func):
     def wrapper(*args, **kwargs):
