@@ -60,6 +60,7 @@ def delete_exceptions_decorator(func):
                     f"Check if the parameters are valid or present!")
     return wrapper
 
+
 def update_exceptions_decorator(func):
     def wrapper(*args, **kwargs):
         try:
