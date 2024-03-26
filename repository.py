@@ -167,6 +167,24 @@ class Repository:
         return list_of_documents
 
     @select_exceptions_decorator
+    def select_all(self):
+        """
+        Retrieve all documents from the MongoDB collection.
+
+        This function fetches all documents from the MongoDB collection associated with the current instance.
+        If an error occurs during the retrieval process, it is caught and handled by the select_exceptions_decorator.
+
+        :return: A list containing all documents retrieved from the MongoDB collection.
+        """
+        collection = self.__get_collection()
+
+        response = collection.find()
+
+        data = [data for data in response]
+
+        return data
+
+    @select_exceptions_decorator
     def select_many_documents(self, search_filter: dict, return_options: dict = None) -> list[dict]:
         """
         This function aims to return a list of documents based on the mandatory search_filter parameter,
